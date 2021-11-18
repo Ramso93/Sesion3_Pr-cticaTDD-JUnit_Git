@@ -14,20 +14,34 @@ public class Cuenta {
     private String dniTitular;
     
     Cuenta(double saldo, String numCuenta, String dniTitular){
-    
+        this.saldo = saldo;
+        this.numCuenta = numCuenta;
+        this.dniTitular = dniTitular;
     }
     
-    public void retirar(double cantidad){
-    
+    public void retirar(double cantidad)throws Exception{
+        
+        if(cantidad<=0){
+            throw new Exception("No se puede retirar cantidades negativas");
+        }else if(this.getSaldo()<cantidad){
+            
+        }else{
+            this.saldo = this.saldo-cantidad;
+        }
     }
-    public void ingresar(double cantidad){
-    
+    public void ingresar(double cantidad)throws Exception{
+        
+        if(cantidad<=0){
+            throw new Exception("No se puede ingresar cantidades negativas");
+        }else{
+            this.saldo = this.saldo+cantidad;
+        }
     }
     public double getSaldo(){
-        return 0.0;
+        return this.saldo;
     }
     public String getNumCuenta(){
-        return "";
+        return this.numCuenta;
     }
     
 }
